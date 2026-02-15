@@ -20,7 +20,7 @@ MonoBehaviour:
   enemySprite: {fileID: 2448582194061851316, guid: c6474b4f4accf48dabc6e785c5ee3c37, type: 3}
   fireballSprite: {fileID: -8409080058256666258, guid: 316b8efa42b3a4bce955b7307f7afb32, type: 3}
   preserveOriginalWorldSize: 1
-  playerScaleMultiplier: 0.6
-  enemyScaleMultiplier: 0.6
-  fireballScaleMultiplier: 0.03
+  playerScaleMultiplier: 1.4
+  enemyScaleMultiplier: 1.4
+  fireballScaleMultiplier: 0.12
   dynamicRefreshInterval: 0.5
