@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class ResultsUIController : MonoBehaviour
 {
+    private const string LabelColorHex = "#A7F432";
+    private const string ValueColorHex = "#F7F9FC";
+
     [Header("Text References")]
     [SerializeField] private TextMeshProUGUI resultTitleText;
     [SerializeField] private TextMeshProUGUI finalScoreText;
@@ -49,10 +52,10 @@ public class ResultsUIController : MonoBehaviour
         bool hasResult = RunResultStore.TryGetResult(out bool isWin, out int score, out int wave, out float timeSeconds);
         string title = hasResult ? (isWin ? "YOU WIN" : "YOU LOSE") : "RESULTS";
 
-        SetText(resultTitleText, title, nameof(resultTitleText));
-        SetText(finalScoreText, $"Score: {Mathf.Max(0, score)}", nameof(finalScoreText));
-        SetText(finalWaveText, $"Wave: {Mathf.Max(0, wave)}", nameof(finalWaveText));
-        SetText(finalTimeText, $"Time: {Mathf.Max(0f, timeSeconds):0.0}s", nameof(finalTimeText));
+        SetText(resultTitleText, $"<b><color={LabelColorHex}>{title}</color></b>", nameof(resultTitleText));
+        SetText(finalScoreText, FormatStatLine("SCORE", $"<b>{Mathf.Max(0, score):N0}</b>"), nameof(finalScoreText));
+        SetText(finalWaveText, FormatStatLine("WAVE", $"<b>{Mathf.Max(0, wave):N0}</b>"), nameof(finalWaveText));
+        SetText(finalTimeText, FormatStatLine("TIME", $"<b>{Mathf.Max(0f, timeSeconds):0.0}</b><color=#FFFFFFCC>s</color>"), nameof(finalTimeText));
     }
 
     private void LoadSceneSafe(string sceneName)
@@ -108,5 +111,10 @@ public class ResultsUIController : MonoBehaviour
         {
             Debug.LogWarning("ResultsUIController: Main Menu Button is not assigned.");
         }
+    }
+
+    private static string FormatStatLine(string label, string value)
+    {
+        return $"<uppercase><color={LabelColorHex}>{label}</color></uppercase><color=#FFFFFFBB>  </color><color={ValueColorHex}>{value}</color>";
     }
 }

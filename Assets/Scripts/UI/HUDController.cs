@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class HUDController : MonoBehaviour
 {
+    private const string LabelColorHex = "#FFD166";
+    private const string ValueColorHex = "#FFF4D6";
+
     [Header("Text References")]
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI waveText;
@@ -14,12 +17,17 @@ public class HUDController : MonoBehaviour
     [SerializeField] private WaveManager waveManager;
     [SerializeField] private PlayerHealth playerHealth;
 
+    [Header("Visual Tuning")]
+    [SerializeField, Min(1f)] private float hudFontSize = 38f;
+    [SerializeField, Min(0.5f)] private float centerStatsScale = 1.15f;
+
     private bool subscribed;
 
     private void OnEnable()
     {
         ResolveReferences();
         ValidateTextReferences();
+        ApplyVisualStyle();
         SubscribeEvents();
         RefreshAll();
     }
@@ -177,7 +185,9 @@ public class HUDController : MonoBehaviour
             return;
         }
 
-        hpText.text = $"HP: {Mathf.Max(0, currentHp)}/{Mathf.Max(0, maxHp)}";
+        int clampedCurrent = Mathf.Max(0, currentHp);
+        int clampedMax = Mathf.Max(0, maxHp);
+        hpText.text = FormatStatLine("HP", $"<b>{clampedCurrent:N0}</b><color=#FFFFFFAA> / </color>{clampedMax:N0}");
     }
 
     private void SetWaveText(int wave)
@@ -187,7 +197,7 @@ public class HUDController : MonoBehaviour
             return;
         }
 
-        waveText.text = $"Wave: {Mathf.Max(0, wave)}";
+        waveText.text = FormatStatLine("WAVE", $"<b>{Mathf.Max(0, wave):N0}</b>");
     }
 
     private void SetTimeText(float seconds)
@@ -197,7 +207,7 @@ public class HUDController : MonoBehaviour
             return;
         }
 
-        timeText.text = $"Time: {Mathf.Max(0f, seconds):0.0}s";
+        timeText.text = FormatStatLine("TIME", $"<b>{Mathf.Max(0f, seconds):0.0}</b><color=#FFFFFFCC>s</color>");
     }
 
     private void SetScoreText(int score)
@@ -207,7 +217,32 @@ public class HUDController : MonoBehaviour
             return;
         }
 
-        scoreText.text = $"Score: {Mathf.Max(0, score)}";
+        scoreText.text = FormatStatLine("SCORE", $"<b>{Mathf.Max(0, score):N0}</b>");
+    }
+
+    private void ApplyVisualStyle()
+    {
+        ApplyTextStyle(hpText, TextAlignmentOptions.TopLeft, 1f);
+        ApplyTextStyle(timeText, TextAlignmentOptions.TopRight, 1f);
+        ApplyTextStyle(scoreText, TextAlignmentOptions.Top, centerStatsScale);
+        ApplyTextStyle(waveText, TextAlignmentOptions.Top, centerStatsScale);
+    }
+
+    private void ApplyTextStyle(TextMeshProUGUI text, TextAlignmentOptions alignment, float scale)
+    {
+        if (text == null)
+        {
+            return;
+        }
+
+        text.enableAutoSizing = false;
+        text.alignment = alignment;
+        text.fontSize = hudFontSize * scale;
+    }
+
+    private static string FormatStatLine(string label, string value)
+    {
+        return $"<uppercase><color={LabelColorHex}>{label}</color></uppercase><color=#FFFFFFBB>  </color><color={ValueColorHex}>{value}</color>";
     }
 
     private void ValidateTextReferences()

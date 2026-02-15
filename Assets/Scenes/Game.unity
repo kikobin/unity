@@ -674,6 +674,7 @@ GameObject:
   - component: {fileID: 625916327}
   - component: {fileID: 625916330}
   - component: {fileID: 625916329}
+  - component: {fileID: 625916331}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -942,6 +943,31 @@ MonoBehaviour:
   playerRb: {fileID: 0}
   faceRightByDefault: 1
   minDirectionThreshold: 0.01
+--- !u!114 &625916331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625916319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd520e38c6de40e1810287916e1127f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSimpleSpriteAnimator
+  targetRenderer: {fileID: 625916323}
+  playerController: {fileID: 625916320}
+  playerAttack: {fileID: 625916325}
+  playerHealth: {fileID: 625916326}
+  legacyAnimator: {fileID: 625916328}
+  idleSprite: {fileID: -1300866344861314401, guid: 55ee6735c2f064af6a7c492112666085, type: 3}
+  walkFrameA: {fileID: -1700127665973821673, guid: a6e9c9607b1cf4fbeb3c02406ea1686a, type: 3}
+  walkFrameB: {fileID: -1700127665973821673, guid: a6e9c9607b1cf4fbeb3c02406ea1686a, type: 3}
+  attackSprite: {fileID: -8809470994601461542, guid: 4e86c90e5eace422f958a479093f1ec8, type: 3}
+  walkFrameDuration: 0.14
+  attackDuration: 1
+  moveThreshold: 0.05
+  disableLegacyAnimator: 1
 --- !u!1 &807005850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,6 +1576,8 @@ MonoBehaviour:
   gameRoot: {fileID: 1634523272}
   waveManager: {fileID: 1083077159}
   playerHealth: {fileID: 625916326}
+  hudFontSize: 38
+  centerStatsScale: 1.15
 --- !u!1 &1859419855
 GameObject:
   m_ObjectHideFlags: 0
