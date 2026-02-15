@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc05f1e60abb46528312171de151649, type: 3}
   m_Name: PngThemeProfile
   m_EditorClassIdentifier: Assembly-CSharp::PngThemeProfile
-  mainMenuBackground: {fileID: -3451699440861859892, guid: 5398a7f3baaa044599808b4c3f54daa1, type: 3}
+  mainMenuBackground: {fileID: -3451699440861859892, guid: 10f411f094cc44b4899f7ab3ad9e3712, type: 3}
   gameBackground: {fileID: 21300000, guid: 002ec5ad0d8cf453e8fe82e552cae44c, type: 3}
-  resultsBackground: {fileID: 2011506779562839316, guid: 5c1b8f734c4554a0687fae01376c9b64, type: 3}
+  resultsBackground: {fileID: 2011506779562839316, guid: 1f951869f57c941beb331ef2c3dcd465, type: 3}
   buttonSprite: {fileID: 0}
-  playerSprite: {fileID: -1300866344861314401, guid: 625cfad5d4ea4495989321fcd79d8c80, type: 3}
-  enemySprite: {fileID: 2448582194061851316, guid: 0a4d011b2cd42480990bf84e42788225, type: 3}
-  fireballSprite: {fileID: -6607481912129624618, guid: b7024cb2805a64237a0f1c841f3bc7a5, type: 3}
+  playerSprite: {fileID: -1300866344861314401, guid: 55ee6735c2f064af6a7c492112666085, type: 3}
+  enemySprite: {fileID: 2448582194061851316, guid: c6474b4f4accf48dabc6e785c5ee3c37, type: 3}
+  fireballSprite: {fileID: -8409080058256666258, guid: 316b8efa42b3a4bce955b7307f7afb32, type: 3}
   preserveOriginalWorldSize: 1
   playerScaleMultiplier: 0.6
   enemyScaleMultiplier: 0.6
