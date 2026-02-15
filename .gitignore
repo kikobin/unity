@@ -1,0 +1,45 @@
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+
+# Visual Studio / JetBrains
+.vs/
+.idea/
+.gradle/
+ExportedObj/
+.consulo/
+
+# OS / misc
+.DS_Store
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity generated
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Addressables / build reports
+*.apk
+*.aab
+*.unitypackage
+
+# Auto-generated meta files for package caches
+Packages/packages-lock.json
